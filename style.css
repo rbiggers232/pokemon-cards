@@ -1,0 +1,215 @@
+body {
+  background-color: #b30e0e;
+}
+.border {
+  border: 5px solid white;
+}
+.highLight {
+  /* border: 5px solid #e3fc03; */
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  from, to {    
+    border-color: transparent    
+}    
+50% {    
+    border-color: #e3fc03   
+} 
+}
+.btn {
+  padding-top: 300px;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+#title {
+  text-align: center;
+  background-color: white;
+  font-family: 'Pokemon Solid', sans-serif;
+  color: yellow;
+  -webkit-text-stroke: 2px;
+  -webkit-text-stroke-color: black;
+}
+#purple {
+  display: flex;
+  flex-direction: column;
+}
+#teal {
+  display: flex;
+}
+#green {
+  display: flex;
+  flex-direction: column;
+}
+#orange {
+  display: flex;
+  flex-direction: column;
+}
+#dark-blue {
+  display: flex;
+  align-items: baseline;
+}
+#computer-turn-score {
+  background-color: thistle;
+  margin: auto;
+}
+#computer-round-score {
+  background-color: thistle;
+  margin: auto;
+}
+
+/* .player-score {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+} */
+
+#player-turn {
+
+  background-color: thistle;
+  margin: auto;
+  
+}
+
+#player-round {
+  background-color: thistle;
+  margin: auto;
+}
+
+
+#computer-cards {
+  display: flex;
+}
+#computer-card-one-stats {
+  background-color: white;
+}
+#computer-card-two-stats {
+  background-color: white;
+}
+#computer-card-three-stats {
+  background-color: white;
+}
+
+/* .card {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  margin-left: 100px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+} */
+
+
+#computer-card-one {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  margin-left: 100px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+
+}
+#computer-card-two {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+
+}
+#computer-card-three {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+  
+}
+.deck {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  background-color: #0e14b3;
+  margin-top: 80px;
+  margin-left: 175px;
+
+  width: 175px;
+  height: 100px;
+  padding: 50px;
+  border: 3px solid white
+
+}
+
+.player-cards {
+  display: flex;
+}
+
+#player-card-one {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  margin-left: 100px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+  
+}
+#player-card-two {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+
+
+}
+#player-card-three {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+
+} 
+
+.stats {
+  background-color: white;
+}
+
+#player-card-one-stats {
+  background-color: white;
+}
+#player-card-two-stats {
+  background-color: white;
+}
+#player-card-three-stats {
+  background-color: white;
+}
+
+.discard-pile {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  background-color: #0e14b3;
+  margin-top: 20px;
+  margin-left: 175px;
+
+  width: 175px;
+  height: 100px;
+  padding: 50px;
+  border: 3px solid white
+
+}

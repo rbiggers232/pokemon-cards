@@ -1,3 +1,4 @@
+/************************** DATABASE *********************/
 const pokemon = [
   {
     name: "Bulbasaur",
@@ -73,18 +74,11 @@ const pokemon = [
   }
 ]
 
-
-
+/************************** VARIABLES *********************/
 let discardPile = [];
 
-//hide card upon play
-  //have turn button hide card thats played
-  //itll be in the game function
-  //add to discard pile display +1 for each card
-  //after three turns, cards = []
-
-
-let player1 = {
+/************************** OBJECTS *********************/
+let player = {
   cards: [], 
   turnScore: 0,
   roundScore: 0,
@@ -100,30 +94,19 @@ let player1 = {
         document.getElementById('player-card-three').classList.add('highLight');
       }
     }
-    player2.playCard();
+    computer.playCard();
   }
 }
 
-let disapper = () => {
-  if (player1.currentCard == player1.cards[0]) {
-    document.getElementById('player-card-one').classList.add('hidden');
-  } else if (player1.currentCard == player1.cards[1]) {
-    document.getElementById('player-card-two').classList.add('hidden');
-  } else if (player1.currentCard == player1.cards[2]) {
-    document.getElementById('player-card-three').classList.add('hidden');
-  }
-}
-
-
-let player2 = {
+let computer = {
   cards: [], 
   turnScore: 0,
   roundScore: 0,
   currentCard: {},
   playCard: function(){
     console.log(this.cards)
-    const index = Math.floor(Math.random() * (player2.cards.length - 1));
-    const card = player2.cards.splice(index, 1);  
+    const index = Math.floor(Math.random() * (computer.cards.length - 1));
+    const card = computer.cards.splice(index, 1);  
     this.currentCard = card[0];
     console.log(this.currentCard)
     console.log(this.cards[0])
@@ -146,98 +129,95 @@ let player2 = {
   }
 }
 
-
-const shuffleCards = () => {
-  pokemon.sort(() =>0.5 - Math.random())
+/************************** FUNCTIONS *********************/
+const startGame = (cards, turns, rounds) => {
+  shuffleCards();
+  for (let i = 0; i < rounds; i++){
+    dealCards(cards);
+    displayPokemon();
+    // console.log(player.currentCard)
+    // round(turns);
+    // endRound();
+  }
+  // endGame();
+  // console.log(pokemon)
+  // console.log(discardPile)
 }
 
+const shuffleCards = () => {
+  pokemon.sort(() => 0.5 - Math.random())
+}
 
 const dealCards = (cardsDealt) => {
   for (let i = 0; i < cardsDealt; i++) {
-    player1.cards.push(pokemon.shift());
-    player2.cards.push(pokemon.shift());
+    player.cards.push(pokemon.shift());
+    computer.cards.push(pokemon.shift());
   }
 }
 
-
-function displayPokemon() {
-  document.getElementById('player-card-one-name').innerHTML = player1.cards[0].name;
-  document.getElementById('player-card-one-damage').innerHTML = player1.cards[0].damage;
-  
-  document.getElementById('player-card-two-name').innerHTML = player1.cards[1].name;
-  document.getElementById('player-card-two-damage').innerHTML = player1.cards[1].damage;
-  
-  document.getElementById('player-card-three-name').innerHTML = player1.cards[2].name;
-  document.getElementById('player-card-three-damage').innerHTML = player1.cards[2].damage;
-  
-  document.getElementById('computer-card-one-name').innerHTML = player2.cards[0].name;
-  document.getElementById('computer-card-one-damage').innerHTML = player2.cards[0].damage;
-  
-  document.getElementById('computer-card-two-name').innerHTML = player2.cards[1].name;
-  document.getElementById('computer-card-two-damage').innerHTML = player2.cards[1].damage;
-  
-  document.getElementById('computer-card-three-name').innerHTML = player2.cards[2].name;
-  document.getElementById('computer-card-three-damage').innerHTML = player2.cards[2].damage;
+const displayCards = () => {
+  document.getElementById('player-card-one-name').innerHTML = player.cards[0].name;
+  document.getElementById('player-card-one-damage').innerHTML = player.cards[0].damage;
+  document.getElementById('player-card-two-name').innerHTML = player.cards[1].name;
+  document.getElementById('player-card-two-damage').innerHTML = player.cards[1].damage;
+  document.getElementById('player-card-three-name').innerHTML = player.cards[2].name;
+  document.getElementById('player-card-three-damage').innerHTML = player.cards[2].damage;
+  document.getElementById('computer-card-one-name').innerHTML = computer.cards[0].name;
+  document.getElementById('computer-card-one-damage').innerHTML = computer.cards[0].damage;
+  document.getElementById('computer-card-two-name').innerHTML = computer.cards[1].name;
+  document.getElementById('computer-card-two-damage').innerHTML = computer.cards[1].damage;
+  document.getElementById('computer-card-three-name').innerHTML = computer.cards[2].name;
+  document.getElementById('computer-card-three-damage').innerHTML = computer.cards[2].damage;
 }
 
-shuffleCards();
-dealCards(3);
-displayPokemon();
-
-
-
-// shuffleCards();
-// dealCards(3);
-// console.log(player1.cards[0])
-// player1.playCard();
-// console.log(player1.cards)
-// displayPokemon();
-
-
+const hideCard = () => {
+  if (player.currentCard == player.cards[0]) {
+    document.getElementById('player-card-one').classList.add('hidden');
+  } else if (player.currentCard == player.cards[1]) {
+    document.getElementById('player-card-two').classList.add('hidden');
+  } else if (player.currentCard == player.cards[2]) {
+    document.getElementById('player-card-three').classList.add('hidden');
+  }
+}
 
 const round = (turnsTaken) => {
   for (let i = 0; i < turnsTaken; i++) {
     console.log("::::MATCH:::::")
-    
-    player2.playCard();
-    console.log(player1.currentCard)
-    if (player1.currentCard.damage > player2.currentCard.damage) {
-      player1.turnScore++;
-      console.log("player1 gets a point")
-    } else if (player2.currentCard.damage > player1.currentCard.damage) {
-      player2.turnScore++;
-      console.log("player2 gets a point")
+    computer.playCard();
+    console.log(player.currentCard)
+    if (player.currentCard.damage > computer.currentCard.damage) {
+      player.turnScore++;
+      console.log("player gets a point")
+    } else if (computer.currentCard.damage > player.currentCard.damage) {
+      computer.turnScore++;
+      console.log("computer gets a point")
     } else {
       console.log("TIE")
     }
-    disapper()
     discardCards();
   }
 }
 
-
 const discardCards = () => {
-  discardPile.push(player1.currentCard, player2.currentCard);
-  player1.currentCard = {};
-  player2.currentCard = {};
+  discardPile.push(player.currentCard, computer.currentCard);
+  player.currentCard = {};
+  computer.currentCard = {};
 }
-
 
 const endRound = () => {
-  if (player1.turnScore > player2.turnScore) {
-    player1.roundScore++;
-  } else if (player2.turnScore > player1.turnScore) {
-    player2.roundScore++;
+  if (player.turnScore > computer.turnScore) {
+    player.roundScore++;
+  } else if (computer.turnScore > player.turnScore) {
+    computer.roundScore++;
   } 
-  console.log("Player 1 score is " + player1.roundScore);
-  console.log("Player 2 score is " + player2.roundScore);
+  console.log("Player 1 score is " + player.roundScore);
+  console.log("Player 2 score is " + computer.roundScore);
 }
 
-
 const endGame = () => {
-  if (player1.roundScore > player2.roundScore) {
+  if (player.roundScore > computer.roundScore) {
     console.log("Player 1 WINS!!!!")
-  } else if (player2.roundScore > player1.roundScore) {
+  } else if (computer.roundScore > player.roundScore) {
     console.log("Player 2 WINS!!!!")
   } else {
     console.log("Game ends in TIE!!!")
@@ -245,52 +225,31 @@ const endGame = () => {
 }
 
 
-const startGame = (cards, turns, rounds) => {
-  shuffleCards();
-  for (let i = 0; i < rounds; i++){
-    dealCards(cards);
-    displayPokemon();
-    // console.log(player1.currentCard)
-    // round(turns);
-    // endRound();
-  }
-  // endGame();
-  // console.log(pokemon)
-  // console.log(discardPile)
-  
-}
 
+/************************** FUNCTIONS CALLS *********************/
 // startGame(3, 3, 3);
 
 
-
+/************************** NOTES *********************/
+//hide card upon play
+  //have turn button hide card thats played
+  //itll be in the game function
+  //add to discard pile display +1 for each card
+  //after three turns, cards = []
 
 //make button to start game
   //repeat the steps below 3xs
   //deck amount updated -6
   //have round start
-    //display player1's cards for player to see
+    //display player's cards for player to see
     //have player choose a card to play against computer
-    //computer shows what random card is selected to play AFTER player1 chooses
+    //computer shows what random card is selected to play AFTER player chooses
     //turnscore is updated +1 to who ever wins turn
     //hide div of card played for both cards
       //+to the discard pile after each card is played
     //round score updated +1 to whomever has the most turnscore points
     //turnscore returns to 0 for both player and computer
 //display winner on the screen somehow
-
-
-    
-  
-
-
-
-
-
-
-
-
-
 
 // GAME OBJECT
 // 1. keep a library of all the Pokemon cards that can be played (see the array in the "The Cards" section)

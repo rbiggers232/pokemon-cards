@@ -12,16 +12,11 @@
   <div id="title">
     <h1>Pokemon The Card Game</h1>
   </div>
-  <!-- <button onclick="startGame(3, 3, 3)">START</button> -->
-  <!-- whole div -->
 <div id="purple">
-  
   <div id="teal">
     <div class="btn">
       <button onclick="hideCard()">Next Turn</button>
-
     </div>
-    
     <div id="green">
       <!-- computer cards "RED"-->
       <div id="computer-cards">
@@ -44,7 +39,6 @@
           </div>
         </div>
       </div>
-    
       <!-- player cards "RED"-->
       <div class="player-cards">
         <div id="player-card-one" class="border" onclick="player.playCard(0)">
@@ -67,23 +61,19 @@
         </div>
       </div>
     </div>
-
     <div id="orange">
       <div class="deck">Deck</div>
       <div class="discard-pile">Discard Pile</div>
     </div>
-  
   </div>
   <div id="dark-blue">
     <!-- score board -->
-      <div id="player-turn">Player Turnscore:</div>
+      <div id="player-turn">Player Turnscore: <span id="player-turn-score">0</span></div>
       <div id="player-round">Player RoundScore:</div>
-      <div id="computer-turn-score">Computer TurnScore:</div>
+      <div id="computer-turn">Computer TurnScore: <span id="computer-turn-score">0</span></div>
       <div id="computer-round-score">Computer RoundScore:</div>
-
   </div>
 </div>
-
   <script src="main.js"></script>
 </body>
 </html>

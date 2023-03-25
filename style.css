@@ -22,7 +22,7 @@ body {
 
 .hidden {
   display: none;
-  opacity: 0;
+  /* opacity: 0; */
 }
 #title {
   text-align: center;
@@ -51,7 +51,7 @@ body {
   display: flex;
   align-items: baseline;
 }
-#computer-turn-score {
+#computer-turn {
   background-color: thistle;
   margin: auto;
 }
@@ -81,6 +81,7 @@ body {
 
 #computer-cards {
   display: flex;
+  justify-content: space-evenly;
 }
 #computer-card-one-stats {
   background-color: white;
@@ -107,7 +108,6 @@ body {
   text-align: center;
   background-color: #0e14b3;
   margin: 5px;
-  margin-left: 100px;
   width: 100px;
   height: 175px;
   padding: 50px;
@@ -151,13 +151,13 @@ body {
 
 .player-cards {
   display: flex;
+  justify-content: space-evenly;
 }
 
 #player-card-one {
   text-align: center;
   background-color: #0e14b3;
   margin: 5px;
-  margin-left: 100px;
   width: 100px;
   height: 175px;
   padding: 50px;

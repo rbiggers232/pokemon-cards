@@ -84,6 +84,7 @@ let player = {
   roundScore: 0,
   currentCard: {}, 
   playCard: function(cardIndex){
+    console.log('Click')
     if (Object.keys(this.currentCard).length == 0) {
       this.currentCard = this.cards[cardIndex];
       if (cardIndex === 0) {
@@ -122,16 +123,6 @@ const startGame = (cards, turns, rounds) => {
   shuffleCards();
   dealCards(cards);
   displayCards();
-  // for (let i = 0; i < rounds; i++){
-    // dealCards(cards);
-    // displayPokemon();
-    // console.log(player.currentCard)
-    // round(turns);
-    // endRound();
-  // }
-  // endGame();
-  // console.log(pokemon)
-  // console.log(discardPile)
 }
 
 const shuffleCards = () => {
@@ -168,36 +159,27 @@ const hideCard = () => {
   } else if (player.currentCard == player.cards[2]) {
     document.getElementById('player-card-three').classList.add('hidden');
   }
+  if (computer.currentCard == computer.cards[0]) {
+    document.getElementById('computer-card-one').classList.add('hidden');
+  } else if (computer.currentCard == computer.cards[1]) {
+    document.getElementById('computer-card-two').classList.add('hidden');
+  } else if (computer.currentCard == computer.cards[2]) {
+    document.getElementById('computer-card-three').classList.add('hidden');
+  }
+  // Discard hand for both players
+  // Reset currentCard to {} for both players
+  // Deal 3 more cards to each player
 }
 
 const turnResult = () => {
-  console.log(":::: MATCH :::::")
   if (player.currentCard.damage > computer.currentCard.damage) {
     player.turnScore++;
-    console.log("Player gets a point")
+    document.getElementById('player-turn-score').innerHTML = player.turnScore;
   } else if (computer.currentCard.damage > player.currentCard.damage) {
     computer.turnScore++;
-    console.log("Computer gets a point")
-  } else {
-    console.log("TIE")
+    document.getElementById('computer-turn-score').innerHTML = computer.turnScore;
   }
 }
-
-// const round = (turnsTaken) => {
-//   for (let i = 0; i < turnsTaken; i++) {
-//     console.log("::::MATCH:::::")
-//     if (player.currentCard.damage > computer.currentCard.damage) {
-//       player.turnScore++;
-//       console.log("Player gets a point")
-//     } else if (computer.currentCard.damage > player.currentCard.damage) {
-//       computer.turnScore++;
-//       console.log("Computer gets a point")
-//     } else {
-//       console.log("TIE")
-//     }
-//     // discardCards();
-//   }
-// }
 
 const discardCards = () => {
   discardPile.push(player.currentCard, computer.currentCard);

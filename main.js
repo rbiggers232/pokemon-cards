@@ -93,14 +93,14 @@ let player = {
       } else if (cardIndex === 2) {
         document.getElementById('player-card-three').classList.add('highLight');
       }
+      computer.playCard();
     }
-    computer.playCard();
   }
 }
 
 let computer = {
   cards: [], 
-  turnScore: 0,
+  turnScore: 0, 
   roundScore: 0,
   currentCard: {},
   playCard: function(){
@@ -112,8 +112,8 @@ let computer = {
       document.getElementById('computer-card-two').classList.add('highLight');
     } else if (index === 2) {
       document.getElementById('computer-card-three').classList.add('highLight');
-    }
-
+    } 
+    turnResult();
   }
 }
 
@@ -170,23 +170,34 @@ const hideCard = () => {
   }
 }
 
-const round = (turnsTaken) => {
-  for (let i = 0; i < turnsTaken; i++) {
-    console.log("::::MATCH:::::")
-    computer.playCard();
-    console.log(player.currentCard)
-    if (player.currentCard.damage > computer.currentCard.damage) {
-      player.turnScore++;
-      console.log("player gets a point")
-    } else if (computer.currentCard.damage > player.currentCard.damage) {
-      computer.turnScore++;
-      console.log("computer gets a point")
-    } else {
-      console.log("TIE")
-    }
-    discardCards();
+const turnResult = () => {
+  console.log(":::: MATCH :::::")
+  if (player.currentCard.damage > computer.currentCard.damage) {
+    player.turnScore++;
+    console.log("Player gets a point")
+  } else if (computer.currentCard.damage > player.currentCard.damage) {
+    computer.turnScore++;
+    console.log("Computer gets a point")
+  } else {
+    console.log("TIE")
   }
 }
+
+// const round = (turnsTaken) => {
+//   for (let i = 0; i < turnsTaken; i++) {
+//     console.log("::::MATCH:::::")
+//     if (player.currentCard.damage > computer.currentCard.damage) {
+//       player.turnScore++;
+//       console.log("Player gets a point")
+//     } else if (computer.currentCard.damage > player.currentCard.damage) {
+//       computer.turnScore++;
+//       console.log("Computer gets a point")
+//     } else {
+//       console.log("TIE")
+//     }
+//     // discardCards();
+//   }
+// }
 
 const discardCards = () => {
   discardPile.push(player.currentCard, computer.currentCard);

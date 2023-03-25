@@ -104,41 +104,31 @@ let computer = {
   roundScore: 0,
   currentCard: {},
   playCard: function(){
-    console.log(this.cards)
-    const index = Math.floor(Math.random() * (computer.cards.length - 1));
-    const card = computer.cards.splice(index, 1);  
-    this.currentCard = card[0];
-    console.log(this.currentCard)
-    console.log(this.cards[0])
-    console.log(this.cards[1])
-    console.log(this.cards[2])
-    if (this.currentCard === this.cards[0]) {
+    const index = Math.floor(Math.random() * computer.cards.length);
+    this.currentCard = this.cards[index];
+    if (index === 0) {
       document.getElementById('computer-card-one').classList.add('highLight');
-    } else if (this.currentCard === this.cards[1]) {
+    } else if (index === 1) {
       document.getElementById('computer-card-two').classList.add('highLight');
-    } else if (this.currentCard === this.cards[2]) {
+    } else if (index === 2) {
       document.getElementById('computer-card-three').classList.add('highLight');
     }
-    // if (index === 0) {
-    //   document.getElementById('computer-card-one').classList.add('highLight');
-    // } else if (index === 1) {
-    //   document.getElementById('computer-card-two').classList.add('highLight');
-    // } else if (index === 2) {
-    //   document.getElementById('computer-card-three').classList.add('highLight');
-    // }
+
   }
 }
 
 /************************** FUNCTIONS *********************/
 const startGame = (cards, turns, rounds) => {
   shuffleCards();
-  for (let i = 0; i < rounds; i++){
-    dealCards(cards);
-    displayPokemon();
+  dealCards(cards);
+  displayCards();
+  // for (let i = 0; i < rounds; i++){
+    // dealCards(cards);
+    // displayPokemon();
     // console.log(player.currentCard)
     // round(turns);
     // endRound();
-  }
+  // }
   // endGame();
   // console.log(pokemon)
   // console.log(discardPile)
@@ -227,7 +217,7 @@ const endGame = () => {
 
 
 /************************** FUNCTIONS CALLS *********************/
-// startGame(3, 3, 3);
+startGame(3, 3, 3);
 
 
 /************************** NOTES *********************/

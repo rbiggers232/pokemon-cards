@@ -1,28 +1,10 @@
+/* ************ layout **************** */
+
 body {
   background-color: #b30e0e;
 }
-.border {
-  border: 5px solid white;
-}
-.highLight {
-  /* border: 5px solid #e3fc03; */
-  animation: blinker 1s linear infinite;
-}
-@keyframes blinker {
-  from, to {    
-    border-color: transparent    
-}    
-50% {    
-    border-color: #e3fc03   
-} 
-}
 .btn {
   padding-top: 300px;
-}
-
-.hidden {
-  display: none;
-  /* opacity: 0; */
 }
 #title {
   text-align: center;
@@ -51,88 +33,25 @@ body {
   display: flex;
   align-items: baseline;
 }
-#computer-turn {
-  background-color: thistle;
-  margin: auto;
+
+/* ************ cards **************** */
+
+.border {
+  border: 5px solid white;
 }
-#computer-round-score {
-  background-color: thistle;
-  margin: auto;
+.highLight {
+  animation: blinker 1s linear infinite;
 }
-
-/* .player-score {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-} */
-
-#player-turn {
-
-  background-color: thistle;
-  margin: auto;
-  
+@keyframes blinker {
+    from, to {    
+      border-color: transparent    
+  }    
+  50% {    
+      border-color: #e3fc03   
+  } 
 }
-
-#player-round {
-  background-color: thistle;
-  margin: auto;
-}
-
-
-#computer-cards {
-  display: flex;
-  justify-content: space-evenly;
-}
-#computer-card-one-stats {
-  background-color: white;
-}
-#computer-card-two-stats {
-  background-color: white;
-}
-#computer-card-three-stats {
-  background-color: white;
-}
-
-/* .card {
-  text-align: center;
-  background-color: #0e14b3;
-  margin: 5px;
-  margin-left: 100px;
-  width: 100px;
-  height: 175px;
-  padding: 50px;
-} */
-
-
-#computer-card-one {
-  text-align: center;
-  background-color: #0e14b3;
-  margin: 5px;
-  width: 100px;
-  height: 175px;
-  padding: 50px;
-  
-
-}
-#computer-card-two {
-  text-align: center;
-  background-color: #0e14b3;
-  margin: 5px;
-  width: 100px;
-  height: 175px;
-  padding: 50px;
-  
-
-}
-#computer-card-three {
-  text-align: center;
-  background-color: #0e14b3;
-  margin: 5px;
-  width: 100px;
-  height: 175px;
-  padding: 50px;
-  
-  
+.hidden {
+  display: none;
 }
 .deck {
   text-align: center;
@@ -148,6 +67,22 @@ body {
   border: 3px solid white
 
 }
+.discard-pile {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  background-color: #0e14b3;
+  margin-top: 20px;
+  margin-left: 175px;
+
+  width: 175px;
+  height: 100px;
+  padding: 50px;
+  border: 3px solid white
+
+}
+
+/* ************ player cards **************** */
 
 .player-cards {
   display: flex;
@@ -181,14 +116,78 @@ body {
   width: 100px;
   height: 175px;
   padding: 50px;
-  
-
 } 
 
+/* ************ computer cards **************** */
+
+#computer-cards {
+  display: flex;
+  justify-content: space-evenly;
+}
+#computer-card-one-stats {
+  background-color: white;
+}
+#computer-card-two-stats {
+  background-color: white;
+}
+#computer-card-three-stats {
+  background-color: white;
+}
+#computer-card-one {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+
+}
+#computer-card-two {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+
+}
+#computer-card-three {
+  text-align: center;
+  background-color: #0e14b3;
+  margin: 5px;
+  width: 100px;
+  height: 175px;
+  padding: 50px;
+  
+}
+
+/* ************ score board **************** */
+
+#computer-turn {
+
+  background-color: thistle;
+  margin: auto;
+
+}
+#computer-round {
+  background-color: thistle;
+  margin: auto;
+}
+
+#player-turn {
+  background-color: thistle;
+  margin: auto;
+}
+
+#player-round {
+  background-color: thistle;
+  margin: auto;
+}
 .stats {
   background-color: white;
 }
-
 #player-card-one-stats {
   background-color: white;
 }
@@ -199,17 +198,19 @@ body {
   background-color: white;
 }
 
-.discard-pile {
+
+
+/* .card {
   text-align: center;
-  vertical-align: middle;
-  line-height: 90px;
   background-color: #0e14b3;
-  margin-top: 20px;
-  margin-left: 175px;
-
-  width: 175px;
-  height: 100px;
+  margin: 5px;
+  margin-left: 100px;
+  width: 100px;
+  height: 175px;
   padding: 50px;
-  border: 3px solid white
+} */
 
-}
+
+
+
+

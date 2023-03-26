@@ -84,15 +84,17 @@ let player = {
   roundScore: 0,
   currentCard: {}, 
   playCard: function(cardIndex){
-    console.log('Click')
     if (Object.keys(this.currentCard).length == 0) {
       this.currentCard = this.cards[cardIndex];
       if (cardIndex === 0) {
         document.getElementById('player-card-one').classList.add('highLight');
+        console.log("p1 highlited")
       } else if (cardIndex === 1) {
         document.getElementById('player-card-two').classList.add('highLight');
+        console.log("p2 highlited")
       } else if (cardIndex === 2) {
         document.getElementById('player-card-three').classList.add('highLight');
+        console.log("p3 highlited")
       }
       computer.playCard();
     }
@@ -107,12 +109,16 @@ let computer = {
   playCard: function(){
     const index = Math.floor(Math.random() * computer.cards.length);
     this.currentCard = this.cards[index];
-    if (index === 0) {
+    console.log(index)
+    if (index == 0) {
       document.getElementById('computer-card-one').classList.add('highLight');
-    } else if (index === 1) {
+      console.log("comp1 highlited")
+    } else if (index == 1) {
       document.getElementById('computer-card-two').classList.add('highLight');
-    } else if (index === 2) {
+      console.log("comp2 highlited")
+    } else if (index == 2) {
       document.getElementById('computer-card-three').classList.add('highLight');
+      console.log("comp3 highlited")
     } 
     turnResult();
   }
@@ -123,6 +129,7 @@ const startGame = (cards, turns, rounds) => {
   shuffleCards();
   dealCards(cards);
   displayCards();
+  
 }
 
 const shuffleCards = () => {
@@ -166,6 +173,10 @@ const hideCard = () => {
   } else if (computer.currentCard == computer.cards[2]) {
     document.getElementById('computer-card-three').classList.add('hidden');
   }
+
+  player.currentCard = {};
+  computer.currentCard = {};
+
   // Discard hand for both players
   // Reset currentCard to {} for both players
   // Deal 3 more cards to each player
